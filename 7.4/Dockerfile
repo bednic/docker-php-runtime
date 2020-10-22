@@ -3,9 +3,9 @@ FROM php:7.4-apache
 
 RUN apt-get update -y \
 && apt-get install -y libpq-dev vim git zip unzip \
+&& docker-php-ext-install pdo pdo_pgsql pdo_mysql sockets bcmath opcache \
 && docker-php-ext-configure pgsql --with-pgsql \
 && docker-php-ext-configure bcmath --enable-bcmath \
-&& docker-php-ext-install pdo pdo_pgsql sockets bcmath opcache \
 && pecl install xdebug apcu \
 && docker-php-ext-enable apcu xdebug
 
